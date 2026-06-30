@@ -235,7 +235,7 @@ function handleBatchMove() {
   showMovePanel.value = true
 }
 
-function handleMove(target: { column: string; categoryId: string | null }) {
+function handleMove(target: { column: 'next' | 'sparks' | 'hold'; categoryId: string | null }) {
   cardsStore.moveCards(moveCardIds.value, target.column, target.categoryId)
   showMovePanel.value = false
   cancelSelection()

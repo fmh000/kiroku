@@ -5,17 +5,17 @@ import { useCardsStore } from '../stores/cards'
 
 const props = defineProps<{
   open: boolean;
-  currentColumn: string;
+  currentColumn: 'next' | 'sparks' | 'hold';
   cardIds: string[];
 }>();
 
 const emit = defineEmits<{
   'update:open': [value: boolean];
-  move: [target: { column: string; categoryId: string | null }];
+  move: [target: { column: 'next' | 'sparks' | 'hold'; categoryId: string | null }];
 }>();
 
 const cardsStore = useCardsStore()
-const targetColumn = ref(props.currentColumn)
+const targetColumn = ref<'next' | 'sparks' | 'hold'>(props.currentColumn as 'next' | 'sparks' | 'hold')
 const targetCategoryId = ref<string | null>(null)
 
 watch(() => props.open, (val) => {
