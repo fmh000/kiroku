@@ -2,11 +2,11 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
 export const useAppStore = defineStore('app', () => {
-  const currentTab = ref<string>('next');
+  const currentTab = ref<'next' | 'sparks' | 'hold'>('next');
   const sidebarOpen = ref(false);
   const searchQuery = ref('');
 
-  function setTab(tab: string) {
+  function setTab(tab: 'next' | 'sparks' | 'hold') {
     currentTab.value = tab;
   }
 
