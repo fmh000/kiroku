@@ -348,6 +348,7 @@ async function handleImportData() {
               @blur="confirmRenameCategory"
               autofocus
             />
+            <button type="button" class="text-xs text-danger shrink-0 px-1" @mousedown.prevent="handleDeleteCategory(cat.id)">删除</button>
           </div>
 
           <!-- Expanded content -->
@@ -375,6 +376,7 @@ async function handleImportData() {
                   @blur="confirmRenameCategory"
                   autofocus
                 />
+                <button type="button" class="text-xs text-danger shrink-0 px-1" @mousedown.prevent="handleDeleteCategory(sub.id)">删除</button>
               </div>
 
               <!-- Sub category cards -->

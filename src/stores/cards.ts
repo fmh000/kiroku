@@ -128,7 +128,7 @@ export const useCardsStore = defineStore('cards', () => {
 
   async function moveCards(
     cardIds: string[],
-    targetColumn: string,
+    targetColumn: 'next' | 'sparks' | 'hold',
     targetCategoryId: string | null
   ) {
     const patch = {
@@ -136,7 +136,7 @@ export const useCardsStore = defineStore('cards', () => {
       categoryId: targetCategoryId,
       updatedAt: Date.now(),
     };
-    await db.cards.bulkUpdate(cardIds.map((id) => [id, patch]));
+    await db.cards.bulkUpdate(cardIds.map((id) => ({ key: id, changes: patch })));
     for (const id of cardIds) {
       const card = cards.value.find((c) => c.id === id);
       if (card) {
